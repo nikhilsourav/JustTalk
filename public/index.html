@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+		integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+	<link rel="stylesheet" href="css/style.css" />
+	<title>JustTalk App</title>
+</head>
+
+<body>
+	<div class="join-container">
+		<header class="join-header">
+			<h1> <img src="/public/Images/chat-icon.png" width="40px" class="logo-img"> JustTalk</h1>
+		</header>
+		<main class="join-main">
+			<form action="chat.html">
+				<div class="form-control">
+					<label for="username">Username</label>
+					<input type="text" name="username" id="username" placeholder="Enter username..." required />
+				</div>
+				<div class="form-control">
+					<label for="room">Room</label>
+					<select name="room" id="room">
+						<option value="JavaScript">JavaScript</option>
+						<option value="Python">Python</option>
+						<option value="PHP">PHP</option>
+						<option value="C#">C#</option>
+						<option value="Ruby">Ruby</option>
+						<option value="Java">Java</option>
+					</select>
+				</div>
+				<button type="submit" class="btn">Join Chat</button>
+			</form>
+		</main>
+	</div>
+	<footer>
+		<div class="sm-links">
+			<a href="https://www.reddit.com/user/nikhil_sourav" target="_blank">
+				<img class="reddit" src="/public/images/reddit_black.png" alt="reddit icon" width="25px">
+			</a>
+			<a href="https://open.spotify.com/user/314x6vv65l75mwuci3hmbd2orija?si=lYHw0I3CRdmkyNbmdQXoRw"
+				target="_blank">
+				<img class="spotify" src="/public/images/spotify_black.png" alt="spotify icon" width="25px">
+			</a>
+			<a href="https://www.youtube.com/channel/UCGHdjWuny-XePkK7Fb1pYFg?view_as=subscriber" target="_blank">
+				<img class="youtube" src="/public/images/youtube_black.png" alt="youtube icon" width="25px">
+			</a>
+			<h4>Created by Nikhil Sourav</h4>
+		</div>
+	</footer>
+</body>
+
+</html>

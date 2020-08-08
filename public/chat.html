@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+    integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="css/style.css">
+  <title>JustTalk App</title>
+</head>
+
+<body>
+  <div class="chat-container">
+    <header class="chat-header">
+      <h1><img src="/public/Images/chat-icon.png" width="40px" class="logo-img"> JustTalk</h1>
+      <a href="index.html" class="btn">Leave Room</a>
+    </header>
+    <main class="chat-main">
+      <div class="chat-sidebar">
+        <h3><i class="fas fa-comments"></i> Room Name:</h3>
+        <h2 id="room-name">JavaScript</h2>
+        <h3><i class="fas fa-users"></i> Users</h3>
+        <ul id="users">
+          <li>Brad</li>
+          <li>John</li>
+          <li>Mary</li>
+          <li>Paul</li>
+          <li>Mike</li>
+        </ul>
+      </div>
+      <div class="chat-messages">
+        <div class="message">
+          <p class="meta">Brad <span>9:12pm</span></p>
+          <p class="text">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi,
+            repudiandae.
+          </p>
+        </div>
+        <div class="message">
+          <p class="meta">Mary <span>9:15pm</span></p>
+          <p class="text">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi,
+            repudiandae.
+          </p>
+        </div>
+      </div>
+    </main>
+    <div class="chat-form-container">
+      <form id="chat-form">
+        <input id="msg" type="text" placeholder="Enter Message" required autocomplete="off" />
+        <button class="btn"><i class="fas fa-paper-plane"></i> Send</button>
+      </form>
+    </div>
+  </div>
+  <footer>
+    <div class="sm-links">
+      <a href="https://www.reddit.com/user/nikhil_sourav" target="_blank">
+        <img class="reddit" src="/public/images/reddit_black.png" alt="reddit icon" width="25px">
+      </a>
+      <a href="https://open.spotify.com/user/314x6vv65l75mwuci3hmbd2orija?si=lYHw0I3CRdmkyNbmdQXoRw" target="_blank">
+        <img class="spotify" src="/public/images/spotify_black.png" alt="spotify icon" width="25px">
+      </a>
+      <a href="https://www.youtube.com/channel/UCGHdjWuny-XePkK7Fb1pYFg?view_as=subscriber" target="_blank">
+        <img class="youtube" src="/public/images/youtube_black.png" alt="youtube icon" width="25px">
+      </a>
+      <h4>Created by Nikhil Sourav</h4>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+
+</html>
