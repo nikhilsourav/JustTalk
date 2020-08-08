@@ -19,7 +19,7 @@ body {
   font-size: 16px;
   background:linear-gradient(to bottom, rgba(228, 227, 228, 0.486), rgba(219, 226, 239, 0.658)),url('../Images/background.jpg');
   background-size: cover;
-  background-position: center;
+  background-position: bottom;
   background-repeat: no-repeat;
   margin: 20px;
   height: 100vh;
@@ -223,4 +223,10 @@ a {
 }
 .youtube {
   margin-right: 10px;
+}
+
+@media(max-width: 700px){
+  footer{
+    display: none;
+  }
 }
