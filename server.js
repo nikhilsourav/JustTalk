@@ -4,7 +4,12 @@ const http = require("http");
 const express = require("express");
 const socketio = require("socket.io");
 const formatMessage = require("./utils/messages");
-const { userJoin, getCurrentUser } = require("./utils/users");
+const {
+  userJoin,
+  getCurrentUser,
+  userLeaves,
+  getRoomUsers,
+} = require("./utils/users");
 const { count } = require("console");
 const app = express();
 const port = process.env.PORT || 3000;
@@ -40,15 +45,20 @@ io.on("connection", (socket) => {
 
     // Listen for chat message
     socket.on("chatMessage", (msg) => {
-      io.emit("message", formatMessage("user", msg));
+      const user = getCurrentUser(socket.id);
+      io.to(user.room).emit("message", formatMessage(user.username, msg));
     });
 
     // Notify when a user disconnects
     socket.on("disconnect", () => {
-      io.emit(
-        "message",
-        formatMessage(botName, `${user.username} has left the chat`)
-      );
+      const user = userLeaves(socket.id);
+
+      if (user) {
+        io.to(user.room).emit(
+          "message",
+          formatMessage(botName, `${user.username} has left the chat`)
+        );
+      }
     });
   });
 });
