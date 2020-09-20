@@ -32,7 +32,7 @@ io.on("connection", (socket) => {
       "message",
       formatMessage(
         botName,
-        "Welcome to JustTalk. A chatting platform designed and developed by Nikhil Sourav"
+        "Welcome! This is a chatting platform designed and developed by Nikhil Sourav"
       )
     );
     // Notify when a user connects
