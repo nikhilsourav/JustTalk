@@ -25,7 +25,7 @@ io.on('connection', (socket) => {
     // Welcome current user
     socket.emit(
       'message',
-      formatMessage(botName, 'Welcome! This is a chatting platform developed by Nikhil Sourav')
+      formatMessage(botName, 'Welcome to JustTalk! This is a chatting platform developed by Nikhil Sourav.')
     );
     // Notify when a user connects
     socket.broadcast
