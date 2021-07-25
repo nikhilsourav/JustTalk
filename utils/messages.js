@@ -1,5 +1,7 @@
+// moment library gives current time
 const moment = require('moment');
 
+// return an obj containing userName, txt(msg) and time
 function formatMessage(username, text) {
   return {
     username,
@@ -8,4 +10,5 @@ function formatMessage(username, text) {
   };
 }
 
+// export
 module.exports = formatMessage;

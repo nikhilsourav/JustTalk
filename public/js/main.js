@@ -1,40 +1,57 @@
+/*
+  .
+  .
+  ===================== DOM setup ====================== //
+  .
+  .
+*/
+// select dom elements
 const chatForm = document.getElementById("chat-form");
 const chatMessages = document.querySelector('.chat-messages');
 const roomName = document.getElementById('room-name')
 const userList = document.getElementById('users')
 
-// Get username and room from url
+// Extract userName and roomName from index page
 const {username, room } = Qs.parse(location.search, {
     ignoreQueryPrefix: true
 })
 
+/*
+  .
+  .
+  ===================== socket ====================== //
+  .
+  .
+*/
+// init socket
 const socket = io();
 
-// Join chatroom
+/*
+  1. JoinRoom event with userName and roomName being sent from frontend
+  SENT
+*/
 socket.emit('Join Room', {username, room});
 
-// Get room and users
+/*
+  2. Receive current room and list of all users in this room and print them in DOM
+  RECEIVED
+*/
 socket.on('roomUsers', ({room, users}) => {
   outputRoomName(room);
   outputUsers(users);
 })
 
-// Message from server
-socket.on("message", (message) => {
-  outputMessage(message);
-
-  // scroll down
-  chatMessages.scrollTop = chatMessages.scrollHeight;
-});
-
-// Message submit
+/*
+  3. Send message typed by user under chatMessage event (msg is string)
+  SENT
+*/
 chatForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  // Get message text
+  // extract message text
   const msg = e.target.elements.msg.value;
 
-  // Emit message to server
+  // send message to server
   socket.emit("chatMessage", msg);
 
   // clear inputs
@@ -43,25 +60,52 @@ chatForm.addEventListener("submit", (e) => {
 
 });
 
-// Output message to dom
+/*
+  4. Receive message from server and broadcast in this room to everyone
+  SENT
+*/
+socket.on("message", (message) => {
+  // print message to dom
+  outputMessage(message);
+
+  // scroll down to last message
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+});
+
+
+
+
+/*
+  .
+  .
+  =============== DOM manipulation utility fn =============== //
+  .
+  .
+*/
+// Output message to DOM
 function outputMessage(message) {
+
+  // create brand new div
   const div = document.createElement("div");
+
+  // add new class for css purpose
   div.classList.add("message");
-  div.innerHTML = `<p class="meta">${message.username} <span>${message.time}</span></p>
-    <p class="text">
-      ${message.text}
-    </p>`;
+
+  // modify the text content of this new div
+  div.innerHTML = 
+  `<p class="meta">${message.username} <span>${message.time}</span></p>
+   <p class="text">${message.text}</p>`;
+
+  // add this brand new div to messages
   document.querySelector(".chat-messages").appendChild(div);
 }
 
-// Add roomname to DOM
+// Display current roomname to DOM (sidebar)
 function outputRoomName(room){
   roomName.innerText = room;
 }
 
-// Add users to DOM
+// Display all users to DOM (sidebar)
 function outputUsers(users){
-  userList.innerHTML = `
-    ${users.map(user => `<li>${user.username}</li>`).join('')}
-  `;
+  userList.innerHTML = `${users.map(user => `<li>${user.username}</li>`).join('')}`;
 }

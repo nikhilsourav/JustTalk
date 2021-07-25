@@ -1,6 +1,7 @@
+// Create temporary database
 const users = [];
 
-// Join user to chat
+// Add user to array (temporary db)
 function userJoin(id, username, room) {
   const user = { id, username, room };
 
@@ -9,25 +10,24 @@ function userJoin(id, username, room) {
   return user;
 }
 
-// Get current user
+// Get current user obj from array by passing unique socket id
 function getCurrentUser(id) {
   return users.find((user) => user.id === id);
 }
 
-// User leaves
+// Delete user from array  by passing unique socket id
 function userLeaves(id) {
   const index = users.findIndex((user) => user.id === id);
 
-  if (index !== -1) {
-    return users.splice(index, 1)[0];
-  }
+  if (index !== -1) return users.splice(index, 1)[0];
 }
 
-// Get room users
+// Return all users in particular room (filtered by roomName)
 function getRoomUsers(room) {
   return users.filter((user) => user.room === room);
 }
 
+// Export
 module.exports = {
   userJoin,
   getCurrentUser,
