@@ -1,6 +1,6 @@
 # JustTalk
 
-[JustTalk](http://chat-app-by-nikhilsourav.herokuapp.com/) is a real-time chat app with multiple chatting room and group chat support.
+[JustTalk](https://justtalk.onrender.com/) is a real-time chat app with multiple chatting room and group chat support.
 
 ## Demo:
 
